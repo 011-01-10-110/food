@@ -1,0 +1,54 @@
+<view>
+    <!-- 顶部图片 -->
+    <view class="top-image">
+        <image src="../../imgs/index_02.jpg"></image>
+    </view>
+    <!-- 类别名称 -->
+    <view class="top-type">
+        <view bind:tap="totype" data-type="all">
+            <image src="../../imgs/index_05.jpg"></image>
+            <text>菜谱分类</text>
+        </view>
+        <block wx:for="{{ types }}" wx:key="_id">
+            <view bind:tap="tolist" id="{{item._id}}">
+                <image src="{{ item.src }}"></image>
+                <text>{{ item.name }}</text>
+            </view>
+        </block>
+        <view bind:tap="tolikes" data-type="like">
+            <image src="../../imgs/index_11.jpg"></image>
+            <text>关注菜谱</text>
+        </view>
+    </view>
+
+    <!-- 热门菜谱 -->
+    <view class="hot-recipe">
+        <view class="hot-recipe-title">
+            <image src="../../imgs/index_18.jpg"></image>
+            <text>热门菜谱</text>
+        </view>
+        <!-- 菜谱列表 -->
+        <view class="hot-recipe-list">
+            <block wx:for="{{ recipes }}" wx:key="_id">
+                <view class="hot-recipe-list-item" id="{{item._id}}" bind:tap="toDetail">
+                    <!-- 图片 -->
+                    <image mode="aspectFill" src="{{ item.files[0] }}"></image>
+                    <!-- 名字 -->
+                    <view class="hot-recipe-list-item-title">{{ item.name }}</view>
+                    <!-- 发布人及浏览次数 -->
+                    <view class="hot-recipe-list-item-info">
+                        <view class="left">
+                            <image  src="{{item.avatarUrl}}"></image>
+                            <text>{{item.nickName}}</text>
+                        </view>
+                        <view class="right">
+                            <image src="../../imgs/airs.png"></image>
+                            <text>{{item.views}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+
+        </view>
+    </view>
+</view>

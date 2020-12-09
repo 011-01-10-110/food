@@ -1,0 +1,29 @@
+<view>
+  <block wx:for="{{ lists }}" wx:key="_id">
+    <view class="list" bind:tap="toDetail" id="{{item._id}}">
+      <image mode="aspectFill" src="{{ item.files[0] }}" class="recipe-image"></image>
+      <!-- 基本信息 -->
+      <view class="list-info">
+        <view class="list-name">{{ item.name }}</view>
+        <view class="list-info-userinfo">
+          <image src="{{ item.avatarUrl }}"></image>
+          <text>{{ item.nickName }}</text>
+        </view>
+        <view class="xing">
+          <!-- 星星 -->
+          <image mode="heightFix" src="{{'../../static/list/xing'+item.star+'.png'}}"></image>
+        </view>
+        <view class="number">
+          <view>
+            <image mode="heightFix" src="../../static/list/followed.png"></image>
+            <text>{{ item.likes }}</text>
+          </view>
+          <view>
+            <image src="../../static/list/airs.png"></image>
+            <text>{{ item.views }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

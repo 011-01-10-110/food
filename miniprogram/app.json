@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/type/type",
+    "pages/list/list",
+    "pages/search/search",
+    "pages/my/my",
+    "pages/pbrecipe/pbrecipe",
+    "pages/category/category"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ea932a",
+    "navigationBarTitleText": "全系美食",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#fd8d20",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "/imgs/home.png",
+        "selectedIconPath": "/imgs/home-selected.png"
+      },
+      {
+        "text": "搜索",
+        "pagePath": "pages/search/search",
+        "iconPath": "/imgs/search.png",
+        "selectedIconPath": "/imgs/search-selected.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/my",
+        "iconPath": "/imgs/my.png",
+        "selectedIconPath": "/imgs/my-selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "usingComponents": {
+    "mp-badge": "/miniprogram_npm/weui-miniprogram/badge/badge",
+    "my-searchbar": "/miniprogram_npm/weui-miniprogram/searchbar/searchbar",
+    "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-slideview": "/miniprogram_npm/weui-miniprogram/slideview/slideview",
+    "mp-uploader": "/miniprogram_npm/weui-miniprogram/uploader/uploader"
+  }
+}

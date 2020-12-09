@@ -1,0 +1,60 @@
+<view>
+  <!-- swiper轮播图 -->
+  <swiper class="swiper" indicator-dots="{{ true }}" indicator-color="#fff" indicator-active-color="#eb9834" autoplay="{{true}}" circular="{{true}}">
+    <block wx:for="{{ food.files }}" wx:key="index">
+      <swiper-item>
+        <image mode="aspectFill" src="{{ item }}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 名称 -->
+  <view class="info">
+    <view class="info-top">
+      <text space="nbsp">l {{food.name}}</text>
+    </view>
+    <view class="info-bottom">
+      <view class="left">
+        <image src="{{food.avatarUrl}}"></image>
+        <text space="nbsp">  {{food.nickName}}</text>
+      </view>
+      <view class="center">
+        <image src="../../static/detail/followed.png"></image>
+        <text>{{food.likes}}</text>
+      </view>
+      <view class="right">
+        <image src="../../imgs/airs.png"></image>
+        <text>{{food.views}}</text>
+      </view>
+    </view>
+  </view>
+  <view style="width:100%;height:30rpx;background-color:#f9f9f9"></view>
+  <!-- 做法显示 -->
+  <view class="makes">
+    <view class="makes-title">
+      做法
+    </view>
+    <view class="makes-content">
+      <rich-text nodes="{{food.recipesMake}}"></rich-text>
+    </view>
+  </view>
+
+  <!-- 底部显示 -->
+  <view class="bottom-set">
+    <view class="set-follow">
+      <!-- 没有关注 -->
+      <view wx:if="{{ !islike }}" bind:tap="addlike">
+        <image src="../../static/detail/follow.png"></image>
+        <text>关注</text>
+      </view>
+
+      <!-- 已经关注 -->
+      <view wx:else bind:tap="addlike">
+        <image src="../../static/detail/followed.png"></image>
+        <text style="color: #ea932a;">已关注</text>
+      </view>
+    </view>
+    <view class="set-concat">
+      <button open-type="contact">联系客服</button>
+    </view>
+  </view>
+</view>
