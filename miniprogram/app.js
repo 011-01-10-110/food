@@ -43,7 +43,7 @@ App({
       wx.cloud.callFunction({
         name: "login",
         success: res => {
-          console.log(res);
+          // console.log(res);
           wx.setStorageSync('_openid', res.result.openid);
         }
       })

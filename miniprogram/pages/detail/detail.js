@@ -63,6 +63,10 @@ Page({
     // 判断关注
     if (this.data.islike) {
       // 添加关注
+      wx.showLoading({
+        title: '关注中',
+        mask: true
+      });
       let [err, res] = await to(db.dbadd({
         _collection: 'likes',
         data: {
@@ -71,6 +75,7 @@ Page({
       }));
       if (!err) {
         // console.log(res);
+        wx.hideLoading();
         wx.showToast({
           title: '已关注',
           icon: 'none',
@@ -95,14 +100,20 @@ Page({
       })
     } else {
       // 取消关注
+      wx.showLoading({
+        title: '取消中',
+        mask: true
+      });
       let [err, res] = await to(db.dbBatchDel({
         _collection: 'likes',
         data: {
-          menu_id: this.data.food._id
+          menu_id: this.data.food._id,
+          _openid: wx.getStorageSync('_openid')
         }
       }));
       if (!err) {
         // console.log(res);
+        wx.hideLoading();
         wx.showToast({
           title: '取消关注',
           icon: 'none',
