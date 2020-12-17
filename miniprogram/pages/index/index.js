@@ -36,10 +36,24 @@ Page({
     },
 
     /**
-     * 下拉
+     * 下拉刷新
      */
     onPullDownRefresh() {
+        wx.showLoading({
+            title: '刷新中',
+            mask: true
+        });
 
+        this.data.recipes = [];
+        this.data.page = 0;
+        // 获取类型
+        this.gettype()
+        // 获取菜谱
+        this.getrecipes()
+        setTimeout(() => {
+            wx.hideLoading();
+        }, 500);
+        wx.stopPullDownRefresh()
     },
     /**
      * 获取类型

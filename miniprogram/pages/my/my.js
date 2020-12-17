@@ -45,6 +45,23 @@ Page({
     // // 获取菜单
     // this.getrecipes()
   },
+
+  /**
+   * 下拉刷新
+   */
+  onPullDownRefresh() {
+    wx.showLoading({
+      title: '刷新中',
+      mask: true
+    });
+    this.getrecipes();
+    this.getLikes();
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
+    wx.stopPullDownRefresh();
+  },
+
   /**
    * 切前台
    */
@@ -157,7 +174,9 @@ Page({
           db.dbRemove({
             _collection: 'types',
             menu_id: e.currentTarget.id
-          }).then(res=>{console.log(res);})
+          }).then(res => {
+            console.log(res);
+          })
         }
       }
     })

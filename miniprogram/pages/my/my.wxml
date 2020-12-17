@@ -17,8 +17,8 @@
   <!-- 导航栏 -->
   <view class="menu" catch:tap="menuTab">
     <view data-title="recipe" class="{{menu === 'recipe' ? 'active':''}}">菜单</view>
-    <view data-title="type"  class="{{menu === 'type' ? 'active':''}}">分类</view>
-    <view data-title="like"  class="{{menu === 'like' ? 'active':''}}">关注</view>
+    <view data-title="type" class="{{menu === 'type' ? 'active':''}}">分类</view>
+    <view data-title="like" class="{{menu === 'like' ? 'active':''}}">关注</view>
   </view>
   <!-- 内容显示 -->
   <!-- 未登录时 -->
@@ -42,7 +42,8 @@
         <!-- 有东西 -->
         <view class="hot-recipe-list" wx:else>
           <block wx:for="{{ recipes }}" wx:key="index">
-            <view class="hot-recipe-list-item" bindlongpress="_delStyle" data-index="{{ index }}" bind:tap="toDetail" id="{{item._id}}">
+            <view class="hot-recipe-list-item" bindlongpress="_delStyle" data-index="{{ index }}" bind:tap="toDetail"
+              id="{{item._id}}">
               <!-- 图片 -->
               <image mode="aspectFill" src="{{ item.files[0] }}"></image>
               <!-- 名字 -->

@@ -172,7 +172,7 @@ Page({
   nolists() {
     wx.showModal({
       title: '提示',
-      content: '暂无数据，可在我的页面添加该菜系食品',
+      content: '暂无数据，可联系客服添加该菜系食品',
       showCancel: true,
       cancelText: '取消',
       confirmText: '确定',

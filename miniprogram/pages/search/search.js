@@ -22,6 +22,22 @@ Page({
   },
 
   /**
+   * 下拉刷新
+   */
+  onPullDownRefresh() {
+    wx.showLoading({
+      title: '刷新中',
+      mask: true
+    });
+    this.gethotlist();
+    this.locallist();
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500);
+    wx.stopPullDownRefresh()
+  },
+
+  /**
    * 显示
    */
   onShow() {
@@ -65,15 +81,23 @@ Page({
   addlocalkey(keyword) {
     let data = wx.getStorageSync('keyword');
     if (data.indexOf(keyword) == -1) {
-      if (data.length >= 10) {
-        data.shift();
-        data.push(keyword)
-        wx.setStorageSync('keyword', data);
+      if (data.length >= 6) {
+        data.pop();
+        // data.unshift(keyword)
+        // wx.setStorageSync('keyword', data);
       } else {
-        data.push(keyword)
-        wx.setStorageSync('keyword', data);
+        // data.unshift(keyword)
+        // wx.setStorageSync('keyword', data);
       }
+    } else {
+      let index = data.indexOf(keyword);
+      data.splice(index, 1);
+      console.log(data);
+      // data.unshift(keyword);
+      // wx.setStorageSync('keyword', data);
     }
+    data.unshift(keyword);
+    wx.setStorageSync('keyword', data);
   },
 
   /**
